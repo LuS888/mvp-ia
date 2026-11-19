@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Configuração da página
-st.set_page_config(page_title="IAV - Inteligência Artificial em Valor", layout="wide")
+st.set_page_config(page_title="IAV - Gestão de Modelos de IA", layout="wide")
 
 # Injeção de CSS para a Identidade Visual (Paleta IAV)
 st.markdown("""
@@ -55,20 +55,33 @@ st.markdown("""
         border: 1px solid #626496;
     }
 
-    /* --- AJUSTE DA LOGO --- */
-    [data-testid="stSidebar"] [data-testid="stImage"] img {
-     opacity: 1 !important; /* Remove a transparência */
-     border-radius: 12px; /* Bordas arredondadas */
-     box-shadow: 0px 4px 10px rgba(0,0,0,0.2); /* Sombra suave */     
+    /* --- AJUSTE FINAL DA LOGO --- */
+    [data-testid="stSidebar"] [data-testid="stImage"] {
+        display: flex;
+        justify-content: center; /* Centraliza a logo */
+        margin-bottom: 10px;
+        margin-top: 20px;
     }
+
+    [data-testid="stSidebar"] [data-testid="stImage"] img {
+        opacity: 1 !important;
+        border-radius: 8px;
+        box-shadow: none; /* Tira a sombra para ficar mais limpo */
+        background-color: transparent !important; /* Remove o fundo branco */
+    }
+
+    /* Reduz o espaço acima do "Cadastrar novo modelo" */
+    [data-testid="stSidebar"] h2 {
+        margin-top: -10px !important;
+        padding-top: 0px !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Carregar e exibir a Logo no topo (na barra lateral)
-st.sidebar.image("Logo.png", use_column_width=True)
+# Carregar e exibir a Logo no topo (na barra lateral) - Largura controlada
+st.sidebar.image("Logo.png", use_container_width=False, width=200)
 
-st.title("IAV: Gestão de Modelos de IA como Ativo de Valor")
+st.title("IAV: Gestão de Modelos de IA como Ativos de Valor")
 st.caption("Protótipo acadêmico — TCC MBA ICMC/USP. Dados fictícios para demonstração.")
 
 TAXA_ANUAL = 0.10
