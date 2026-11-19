@@ -1,8 +1,63 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="Valor de IA", layout="wide")
-st.title("Gestão de Modelos de IA como Ativos")
+# Configuração da página
+st.set_page_config(page_title="IAV - Inteligência Artificial em Valor", layout="wide")
+
+# Injeção de CSS para a Identidade Visual (Paleta IAV)
+st.markdown("""
+    <style>
+    /* Fundo principal e cor do texto */
+    .stApp {
+        background-color: #311951; /* Roxo Escuro */
+        color: #E4F4F4; /* Cinza Claro */
+    }
+    
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #451477; /* Roxo Médio */
+    }
+    
+    /* Títulos e Cabeçalhos */
+    h1, h2, h3, h4, h5, h6 {
+        color: #E4F4F4 !important;
+    }
+    
+    /* Botões */
+    .stButton>button {
+        background-color: #626496; /* Roxo Claro */
+        color: #E4F4F4;
+        border: none;
+        border-radius: 5px;
+    }
+    .stButton>button:hover {
+        background-color: #451477;
+        color: #E4F4F4;
+    }
+    
+    /* Tabelas do DataFrame */
+    [data-testid="stDataFrame"] {
+        background-color: #E4F4F4;
+    }
+    
+    /* Métricas (Cards) */
+    [data-testid="stMetricValue"] {
+        color: #E4F4F4;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #626496;
+    }
+    
+    /* Caixa de informação (Info) */
+    .stAlert {
+        background-color: #451477;
+        color: #E4F4F4;
+        border: 1px solid #626496;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.title("IAV: Gestão de Modelos de IA como Ativos")
 st.caption("Protótipo acadêmico — TCC MBA ICMC/USP. Dados fictícios para demonstração.")
 
 TAXA_ANUAL = 0.10
@@ -71,6 +126,7 @@ st.subheader("Detalhe do modelo selecionado")
 sel = st.selectbox("Escolha um modelo", df["Modelo"])
 m_sel = next(m for m in modelos_demo if m["Modelo"] == sel)
 r = calcular(m_sel["Custo Treino"], m_sel["Custo Dado"], m_sel["Custo Inferência"], m_sel["Custo Manutenção"], m_sel["Benefício Mensal"])
+
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("VPL (24 meses)", f"R$ {r['VPL']:,.0f}")
 col2.metric("ROI", f"{r['ROI']:.1f}%")
