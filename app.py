@@ -57,7 +57,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("IAV: Gestão de Modelos de IA como Ativos")
+st.title("IAV: Gestão de Modelos de IA como Ativo de Valor")
 st.caption("Protótipo acadêmico — TCC MBA ICMC/USP. Dados fictícios para demonstração.")
 
 TAXA_ANUAL = 0.10
