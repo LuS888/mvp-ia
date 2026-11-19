@@ -54,8 +54,19 @@ st.markdown("""
         color: #E4F4F4;
         border: 1px solid #626496;
     }
+
+    /* --- AJUSTE DA LOGO --- */
+    [data-testid="stSidebar"] [data-testid="stImage"] img {
+     opacity: 1 !important; /* Remove a transparência */
+     border-radius: 12px; /* Bordas arredondadas */
+     box-shadow: 0px 4px 10px rgba(0,0,0,0.2); /* Sombra suave */     
+    }
+    }
     </style>
 """, unsafe_allow_html=True)
+
+# Carregar e exibir a Logo no topo (na barra lateral)
+st.sidebar.image("Logo.png", use_column_width=True)
 
 st.title("IAV: Gestão de Modelos de IA como Ativo de Valor")
 st.caption("Protótipo acadêmico — TCC MBA ICMC/USP. Dados fictícios para demonstração.")
